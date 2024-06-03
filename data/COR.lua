@@ -305,10 +305,6 @@ function job_post_precast(spell, spellMap, eventArgs)
 					enable('range')
 					equip({range="Compensator"})
 				end
-				-- if item_available("Lanun Knife") then
-				-- 	enable('main')
-				-- 	equip({main="Lanun Knife"})
-				-- end
 				if sets.precast.CorsairRoll.main and sets.precast.CorsairRoll.main ~= player.equipment.main then
 					enable('main')
 					equip({main=sets.precast.CorsairRoll.main})
