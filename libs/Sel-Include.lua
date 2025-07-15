@@ -834,6 +834,7 @@ end
 --------------------------------------
 
 function filtered_action(spell, eventArgs)
+	add_to_chat(217,"filtering actions "..spell.english)
 	local eventArgs = {cancel = false}
 
     -- Check users action filtering
