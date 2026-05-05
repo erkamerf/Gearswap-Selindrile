@@ -1470,7 +1470,6 @@ end
 function check_use_item()
 	if useItem then
 		local Offset = 18000-os.time()
-		
 		if time_test then
 			windower.add_to_chat(tostring(seconds_to_clock(get_usable_item('Warp Ring').next_use_time + Offset)))
 		end

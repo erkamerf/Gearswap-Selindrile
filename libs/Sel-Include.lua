@@ -407,8 +407,11 @@ function init_include()
 		if not (os.clock() > tickdelay) then return end
 		
 		gearswap.refresh_globals(false)
+
+		--  or buffactive['Sneak'] or buffactive['Invisible'] I removed this because it prevented "preticking" and therefore prevented Warping while being Sneaky.
+			-- further testing required to find out why it was like this in the first place
 		
-		if (player ~= nil) and (player.status == 'Idle' or player.status == 'Engaged') and not (delayed_cast ~= '' or check_midaction() or moving or buffactive['Sneak'] or buffactive['Invisible'] or silent_check_disable()) then
+		if (player ~= nil) and (player.status == 'Idle' or player.status == 'Engaged') and not (delayed_cast ~= '' or check_midaction() or moving or silent_check_disable()) then
 			if pre_tick then
 				if pre_tick() then return end
 			end
@@ -834,7 +837,6 @@ end
 --------------------------------------
 
 function filtered_action(spell, eventArgs)
-	add_to_chat(217,"filtering actions "..spell.english)
 	local eventArgs = {cancel = false}
 
     -- Check users action filtering
@@ -864,6 +866,7 @@ function filtered_action(spell, eventArgs)
 	
 	-- Final pass for filtering and error reporting.
     if not eventArgs.cancel and extra_default_filtered_action then
+
         extra_default_filtered_action(spell, eventArgs)
     end
 
